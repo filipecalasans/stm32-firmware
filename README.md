@@ -13,6 +13,6 @@ librareis you will need are:
     
     > Most of the routines in libgcc handle arithmetic operations that the target processor cannot perform directly. This includes integer multiply and divide on some machines, and all floating-point and fixed-point operations on other machines. libgcc also includes routines for exception handling, and a handful of miscellaneous operations.
 
-    * newlib: Contains libc and libm for embedded systems.
+    * newlib: Contains libc and libm for bare-metal firmwares.
     
     > Newlib is a C standard library implementation intended for use on embedded systems. It is a conglomeration of several library parts, all under free software licenses that make them easily usable on embedded products.
