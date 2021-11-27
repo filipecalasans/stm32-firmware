@@ -10,42 +10,18 @@ set(CMAKE_CXX_FLAGS_DEBUG "-Og -g")
 set(CMAKE_C_FLAGS_RELEASE "-Os -flto")
 set(CMAKE_CXX_FLAGS_RELEASE "-Os -flto")
 
-
-add_compile_options(
-    $<$<COMPILE_LANGUAGE:C>:-std=c11>
-    $<$<COMPILE_LANGUAGE:CXX>:-std=c++17>
-    $<$<COMPILE_LANGUAGE:CXX>:-fms-extensions>
-    $<$<COMPILE_LANGUAGE:CXX>:-fno-exceptions>
-    $<$<COMPILE_LANGUAGE:CXX>:-fno-rtti>
-    $<$<COMPILE_LANGUAGE:CXX>:-fno-use-cxa-atexit>
-    $<$<COMPILE_LANGUAGE:CXX>:-fno-threadsafe-statics>
-    -fstrict-volatile-bitfields
-    -ffunction-sections
-    -fdata-sections
-
-    -Werror
-    -Wall
-    -Wextra
-    -Wcast-align
-    -Wconversion
-    -Wsign-conversion
-    -Wshadow
-    -Wlogical-op
-    -Wsuggest-final-types
-    -Wsuggest-final-methods
-    -pedantic
-)
-
 add_link_options(
     -Wl,--gc-sections
     --sysroot="${TOOLCHAIN_SYSROOT}"
 )
 
 # Arch
-# add_subdirectory(arch/arm)
-# SoC
-#add_subdirectory(startup/${TARGET_SOC})
-# BSP
+add_subdirectory(arch/arm-cortex-m4)
+
+# SoC - System on Chip
+add_subdirectory(platform/stm32f30x)
+
+# Board
 #add_subdirectory(bsp/${BOARD})
 # Drivers
 
