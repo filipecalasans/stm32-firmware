@@ -1,3 +1,4 @@
+include(utils)
 
 add_executable(main)
 
@@ -33,3 +34,5 @@ target_compile_options(
     -Wsuggest-final-methods
     -pedantic
 )
+
+generate_hex_file(main)
