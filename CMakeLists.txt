@@ -11,7 +11,6 @@ set(CMAKE_C_FLAGS_RELEASE "-Os -flto")
 set(CMAKE_CXX_FLAGS_RELEASE "-Os -flto")
 
 add_link_options(
-    -Wl,--gc-sections
     --sysroot="${TOOLCHAIN_SYSROOT}"
 )
 
