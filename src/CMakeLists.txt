@@ -8,21 +8,20 @@ target_sources(main PUBLIC
     newlib.c
 )
 
-target_link_libraries(main smt32f30x_std_peripherals c m gcc nosys)
+target_link_libraries(main smt32f30x_std_peripherals c m gcc)
 
 target_link_options(main PUBLIC 
     -T 
     ${CMAKE_CURRENT_SOURCE_DIR}/../platform/stm32f30x/startup/stm32f303.ld 
     -nostartfiles
     -nostdlib
-) 
+)
 
 
 target_compile_options(
     main
     PRIVATE
     $<$<COMPILE_LANGUAGE:C>:-std=c11>
-    $<$<C_COMPILER_ID:GNU>:--specs=nosys.specs>
 
     -fstrict-volatile-bitfields
     -ffunction-sections
@@ -34,7 +33,6 @@ target_compile_options(
     -Wcast-align
     -Wconversion
     -Wsign-conversion
-    -Wshadow
     -Wlogical-op
     -Wsuggest-final-types
     -Wsuggest-final-methods
@@ -42,3 +40,4 @@ target_compile_options(
 )
 
 generate_hex_file(main)
+generate_binary_file(main)

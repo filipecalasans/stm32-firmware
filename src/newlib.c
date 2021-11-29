@@ -71,7 +71,7 @@ int _isatty (FILEHANDLE fh)
 
 // register char *stack_ptr __asm__ ("sp");
 
-caddr_t _sbrk(int incr) {
+void* _sbrk(int incr) {
    (void)incr;
 //   extern char _end;		/* Defined by the linker */
 //   static char *heap_end;
@@ -87,8 +87,8 @@ caddr_t _sbrk(int incr) {
 //   }
 
 //   heap_end += incr;
-  abort();
-  return 0; // (caddr_t) prev_heap_end;
+  while(1) {}
+  return (void*)0; // (caddr_t) prev_heap_end;
 }
 
 int _kill(int pid, int sig) {
