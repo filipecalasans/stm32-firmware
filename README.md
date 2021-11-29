@@ -20,7 +20,7 @@ prebuilt compiler libraries gcc-arm-none-eabi. Some of the librareis you will ne
 
 ### Toolchain Location
 
-This repo make some assumptions about the toolchain location as follow:
+This repo makes some assumptions about the toolchain location as follow:
 
 ### GCC
 
@@ -30,27 +30,36 @@ ARM GCC toolchain is provided in `tools/gcc-arm-none-eabi-10.3`. The paths can b
 
 * TODO: Define llvm toolchain cmake file.
 
+### Ninja
+
+Ninja binary is provided in `tools/ninja/`.
+
+### How can I make adjustments on the paths?
+
+You can adjust the paths where the toolchain is located by editing the file `vars.sh`.
+
 ## File Origin, Project Organization & License
 
 This project is composed of several header/sources made availalbe by the chip vendor (STMMicroelectornics)
 that helps to ease development. Those files are meant to describe the underlying CPU and memory mappend
 peripherals in a ergonomic and developer friedly way. This will avoid for example that we need to look at the
-datasheets for each peripheral mapped address.
+datasheets for each peripheral mapped address speeding up development a lot.
 
 The files were laid out in this project on a directory structure that can ease re-using this same project 
 definition for other `SoC + Board`  combination.
 
-###  Startup Code and Linker scripts
+### Startup Code, Linker scripts `platform/$PLAT/startup/*` and STD Peripherals:
 
 * https://github.com/STMicroelectronics/cmsis_device_f3
 
 License Apache 2.0: https://github.com/STMicroelectronics/cmsis_device_f3/blob/master/LICENSE.md
 
-Provides `stm32fXX.h` device peripheral layer header files located in `platform/stm32f30x`.
+
+Those are the files located in `platform/*`. They contain the startup code for each SoC supported, and also the linker script that describes the device memory layout. Additionally, you will also find auxiliary headers and source for easing acessing the SoC peripherals. For now, the code base only contains required code for developing for the microcontroller STM32F30xc family. The examples provided have been tested with the STM Discoveryboard that contains the chip STM32F303VC6
 
 ## ARM CMSIS (Cortex Microcontroller Softare Interface Standard) for Cortex-M4
 
-* You can download the files from `arch/arm-cortex-m4` from the following ARM repo: 
+* The files located in `arch/arm-cortex-m4` can be downloaded from the ARM repo, in:
 
 https://github.com/ARM-software/CMSIS/tree/master/CMSIS/Include
 
@@ -142,7 +151,8 @@ sudo apt-get install gdb-multiarch
 ```
 
 ```bash
-$TOOLCHAIN/bin/arm-none-eabi-gdb
+source ./vars.sh
+$GCC_TOOLCHAIN_PATH/bin/arm-none-eabi-gdb
 ```
 
 The following helper script will launch the debug server and connect to the debugger server.
