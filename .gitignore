@@ -2,3 +2,4 @@ tools/
 archives/
 out/
 .vscode/*
+.gdb_history

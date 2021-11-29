@@ -17,7 +17,6 @@ target_link_options(main PUBLIC
     -nostdlib
 )
 
-
 target_compile_options(
     main
     PRIVATE
@@ -27,6 +26,7 @@ target_compile_options(
     -ffunction-sections
     -fdata-sections
 
+    -Wl,--gc-sections
     -Werror
     -Wall
     -Wextra

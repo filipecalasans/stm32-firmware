@@ -1,5 +1,7 @@
+# Base CMake Project for firmware development using STM32F devices
 
-# Setting Up Toolchain
+
+## Setting Up the Toolchain
 
 * Download gcc-arm-none-eabi from ARM website in:
 
@@ -16,7 +18,19 @@ prebuilt compiler libraries gcc-arm-none-eabi. Some of the librareis you will ne
     
     > Newlib is a C standard library implementation intended for use on embedded systems. It is a conglomeration of several library parts, all under free software licenses that make them easily usable on embedded products.
 
-# File Origin & Project Organization & License
+### Toolchain Location
+
+This repo make some assumptions about the toolchain location as follow:
+
+### GCC
+
+ARM GCC toolchain is provided in `tools/gcc-arm-none-eabi-10.3`. The paths can be updated accordingnly in `./build.sh`. Toolchain definitions can be found in `cmake/toolchain/gcc.cmake`  and `cmake/toolchain/sysroot.cmake`.
+
+### LLVM
+
+* TODO: Define llvm toolchain cmake file.
+
+## File Origin, Project Organization & License
 
 This project is composed of several header/sources made availalbe by the chip vendor (STMMicroelectornics)
 that helps to ease development. Those files are meant to describe the underlying CPU and memory mappend
@@ -26,7 +40,7 @@ datasheets for each peripheral mapped address.
 The files were laid out in this project on a directory structure that can ease re-using this same project 
 definition for other `SoC + Board`  combination.
 
-##  Startup Code and Linker scripts
+###  Startup Code and Linker scripts
 
 * https://github.com/STMicroelectronics/cmsis_device_f3
 
@@ -34,7 +48,7 @@ License Apache 2.0: https://github.com/STMicroelectronics/cmsis_device_f3/blob/m
 
 Provides `stm32fXX.h` device peripheral layer header files located in `platform/stm32f30x`.
 
-# ARM CMSIS (Cortex Microcontroller Softare Interface Standard) for Cortex-M4
+## ARM CMSIS (Cortex Microcontroller Softare Interface Standard) for Cortex-M4
 
 * You can download the files from `arch/arm-cortex-m4` from the following ARM repo: 
 
@@ -43,7 +57,7 @@ https://github.com/ARM-software/CMSIS/tree/master/CMSIS/Include
 License: https://github.com/ARM-software/CMSIS/blob/master/CMSIS/CMSIS_END_USER_LICENCE_AGREEMENT.pdf
 
 
-# St-link tools
+## St-link tools
 
 In order to flash and debug firmware for stm32 based boards with support to st-link, you 
 should install the st-link tools. The st-link tools can be found in the repo:
@@ -54,7 +68,7 @@ https://github.com/stlink-org/stlink
 Installation steps for Linux:
 
 
-## Install libusb dependncy from source
+### Install libusb dependncy from source
 
 ```bash 
 
@@ -72,7 +86,7 @@ make -j4
 sudo make install 
 ```
 
-## Install libusb from package manager:
+### Install libusb from package manager:
 
 ```bash
 # Install prebuilt libusb from package manager.
@@ -81,9 +95,9 @@ sudo make install
 sudo apt-get install libusb-1.0-0-dev
 ```
 
-## Install st-link tools
+### Install st-link tools
 
-* Required to have CMake installed.
+* NOTE: Required to have CMake installed.
 
 ```bash
 STLINK_REPO=https://github.com/stlink-org/stlink.git
@@ -96,4 +110,52 @@ git checkout v1.7.0
 make
 sudo make install
 ```
+
+## Building your firmware 
+
+```bash
+./build.sh
+```
+
+## Flashing a STM32F3 based board using stlink
+
+```bash
+./flash-stm32f3.sh
+``` 
+
+## Debugging firmware using stlink
+
+* NOTE: Make sure you have installed gdb-multiarch for debuggingn non-host binaries.
+
+```bash
+sudo apt-get install gdb-multiarch
+```
+
+The following helper script will launch the debug server and connect to the debugger server.
+
+```bash
+./debug-stm32f3.sh
+```
+
+Use the following command to kill evantual reminiscent background processes:
+
+```bash
+./clean-debugger.sh
+```
+
+If you want to use Vscode GUI for a more firendly user experience, you will want to customize the scripts to only launch the debug server, and setup vscode to connect to `localhost:4500`.
+
+### Flashing the board from the gdb console
+
+```bash
+(gdb) load out/src/main.elf
+```
+
+### TODO:
+
+* Incorporate STD Peripheral library for STM32f3
+
+* Make target generics on CMake so we can build for nay target platform.
+
+
 
