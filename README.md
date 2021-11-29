@@ -111,6 +111,15 @@ make
 sudo make install
 ```
 
+### st-link without sudo
+
+Copy the udev rules rpovided in the st-link repo to the following directory:
+
+```bash
+STLINK_SOURCE"<YOUR-ST-LINK-SRC>"
+sudo cp $STLINK_SOURCE/config/udev/rules.d/49-stlinkv* /etc/udev/rules.d/
+```
+
 ## Building your firmware 
 
 ```bash

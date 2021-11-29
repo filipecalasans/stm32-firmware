@@ -6,7 +6,7 @@ THIS_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 ELF_FIRMWARE="$THIS_DIR/out/src/main.elf"
 PORT=4500
 
-sudo ./st st-util -p "$PORT" &
+./st st-util -p "$PORT" &
 
 gdb-multiarch "$ELF_FIRMWARE" \
     -ex 'target extended-remote localhost:$PORT' \
