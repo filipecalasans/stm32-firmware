@@ -134,10 +134,15 @@ sudo cp $STLINK_SOURCE/config/udev/rules.d/49-stlinkv* /etc/udev/rules.d/
 
 ## Debugging firmware using stlink
 
-* NOTE: Make sure you have installed gdb-multiarch for debuggingn non-host binaries.
+* There two options of debugger, one is to use the gdb shipped in the ARM gcc toolchain. The onther option is to 
+install gdb-multiarch for debuging non-host binaries.
 
 ```bash
 sudo apt-get install gdb-multiarch
+```
+
+```bash
+$TOOLCHAIN/bin/arm-none-eabi-gdb
 ```
 
 The following helper script will launch the debug server and connect to the debugger server.

@@ -34,8 +34,6 @@ target_compile_options(
     -Wconversion
     -Wsign-conversion
     -Wlogical-op
-    -Wsuggest-final-types
-    -Wsuggest-final-methods
     -pedantic
 )
 
