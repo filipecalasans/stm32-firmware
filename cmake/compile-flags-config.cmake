@@ -1,0 +1,32 @@
+add_compile_options(
+    $<$<COMPILE_LANGUAGE:C>:-std=c11>
+    $<$<COMPILE_LANGUAGE:CXX>:-std=c++17>
+    $<$<COMPILE_LANGUAGE:CXX>:-fms-extensions>
+    $<$<COMPILE_LANGUAGE:CXX>:-fno-exceptions>
+    $<$<COMPILE_LANGUAGE:CXX>:-fno-rtti>
+    $<$<COMPILE_LANGUAGE:CXX>:-fno-use-cxa-atexit>
+    $<$<COMPILE_LANGUAGE:CXX>:-fno-threadsafe-statics>
+    -fstrict-volatile-bitfields
+    -ffunction-sections
+    -fdata-sections
+    -fno-threadsafe-statics
+
+    -Werror
+    -Wall
+    -Wextra
+    -Wcast-align
+    -Wconversion
+    -Wsign-conversion
+    -Wold-style-cast
+    -Wshadow
+    -Wlogical-op
+    -Wsuggest-override
+    -Wsuggest-final-types
+    -Wsuggest-final-methods
+    -pedantic
+)
+
+add_link_options(
+    -Wl,--gc-sections
+    --sysroot="${TOOLCHAIN_SYSROOT}"
+)
