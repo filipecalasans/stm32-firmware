@@ -15,4 +15,3 @@ mkdir -p "${THIS_DIR}/out"
     -DCMAKE_BUILD_TYPE="Debug" \
     && "${NINJA_PATH}"  
 )
-# (cd out/ && ninja)
