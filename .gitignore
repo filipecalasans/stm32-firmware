@@ -1,3 +1,4 @@
 tools/
 archives/
 out/
+.vscode/*
