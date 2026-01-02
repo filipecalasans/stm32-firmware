@@ -1,0 +1,2 @@
+tools/arm-gnu-toolchain-15.2.rel1-x86_64-arm-none-eabi filter=lfs diff=lfs merge=lfs -text
+tools/ninja filter=lfs diff=lfs merge=lfs -text
