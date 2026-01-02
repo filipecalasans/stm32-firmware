@@ -81,6 +81,14 @@ https://github.com/stlink-org/stlink
 
 Installation steps for Linux:
 
+### Fedora 
+
+Fedora distributes the st-link tools through DNF. The following command should install all the tools required:
+
+```bash
+stlink
+stlink-gui
+```
 
 ### Install libusb dependncy from source
 
