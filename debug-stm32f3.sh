@@ -9,7 +9,7 @@ THIS_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 # 
 source ${THIS_DIR}/vars.sh
 
-ELF_FIRMWARE="$BUILD_OUTPUT/src/main.elf"
+ELF_FIRMWARE="$BUILD_OUTPUT/sample/main.elf"
 
 GDB="gdb-multiarch"
 if [[ $1 == "-t" ]]; then

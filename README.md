@@ -178,7 +178,7 @@ If you want to use Vscode GUI for a more firendly user experience, you will want
 ### Flashing the board from the gdb console
 
 ```bash
-(gdb) load out/src/main.elf
+(gdb) load out/sample/main.elf
 ```
 
 ### TODO:

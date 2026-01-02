@@ -25,4 +25,4 @@ add_subdirectory(platform/stm32f30x)
 # Drivers
 
 # Application
-add_subdirectory(src)
+add_subdirectory(sample)
