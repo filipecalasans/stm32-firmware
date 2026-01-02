@@ -5,7 +5,8 @@
 
 * Download gcc-arm-none-eabi from ARM website in:
 
-https://developer.arm.com/tools-and-software/open-source-software/developer-tools/gnu-toolchain/gnu-rm/downloads
+https://developer.arm.com/downloads/-/arm-gnu-toolchain-downloads
+
 
 * Even if we opt for using llvm-clang as the cross-compiler, you can re-use the 
 prebuilt compiler libraries gcc-arm-none-eabi. Some of the librareis you will need are:
@@ -24,7 +25,12 @@ This repo makes some assumptions about the toolchain location as follow:
 
 ### GCC
 
-ARM GCC toolchain is provided in `tools/gcc-arm-none-eabi-10.3`. The paths can be updated accordingnly in `./build.sh`. Toolchain definitions can be found in `cmake/toolchain/gcc.cmake`  and `cmake/toolchain/sysroot.cmake`.
+ARM GCC toolchain is provided in `$ARM_TOOLCHAIN_PATH`. The toolchain directory layou from the ARM tar ball distributed in the link provided. The toolchain definition can be found in `cmake/toolchain/gcc.cmake`  and `cmake/toolchain/sysroot.cmake`. 
+
+### GCC on Linux [WARNING]
+
+If you'd like to use the `arm-none-eabi` toolchain installed via your package manager, some adjustmnets will be required in the toolchain files. The approach recommended is by creating a new pair of cmake files 
+and fix the pathes accordingly. 
 
 ### LLVM
 
