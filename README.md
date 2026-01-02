@@ -3,7 +3,7 @@
 
 ## Setting Up the Toolchain
 
-* Download gcc-arm-none-eabi from ARM website in:
+* The toolchain provided in tool/ was downloade is the gcc-arm-none-eabi from ARM website  located in:
 
 https://developer.arm.com/downloads/-/arm-gnu-toolchain-downloads
 
@@ -29,8 +29,7 @@ ARM GCC toolchain is provided in `$ARM_TOOLCHAIN_PATH`. The toolchain directory 
 
 ### GCC on Linux [WARNING]
 
-If you'd like to use the `arm-none-eabi` toolchain installed via your package manager, some adjustmnets will be required in the toolchain files. The approach recommended is by creating a new pair of cmake files 
-and fix the pathes accordingly. 
+If you'd like to use the `arm-none-eabi` toolchain installed via your package manager, some adjadjustments will be required in the toolchain files. The approach recommended is by creating a new pair of cmake files and fix the paths accordingly.
 
 ### LLVM
 
